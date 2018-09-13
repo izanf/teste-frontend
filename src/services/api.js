@@ -5,8 +5,6 @@ const API = axios.create({
   baseURL: API_URL,
 });
 
-const FILMS_ENDPOINT = '';
-
 export default {
-  films: () => API.get(`${FILMS_ENDPOINT}`, { params: { s: 'any'}}),
+  films: params => API.get('', { params }),
 };

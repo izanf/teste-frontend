@@ -39,10 +39,10 @@ const reducer = (state = initialState, action) => {
 
 export default reducer;
 
-export const fetchFilms = () => async (dispatch) => {
+export const fetchFilms = params => async (dispatch) => {
   try {
     dispatch({ type: Types.FETCH });
-    const response = await Api.films();
+    const response = await Api.films(params);
     dispatch({ type: Types.FETCH_SUCCESS, payload: response.data });
   } catch (err) {
     dispatch({ type: Types.FETCH_FAILURE, payload: err.response.data });

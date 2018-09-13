@@ -24,6 +24,12 @@ injectGlobal`
     margin: 0;
   }
 
+  input {
+    :focus {
+      outline: none;
+    }
+  }
+
   :root {
     --orange: #f37820;
     --black: #000000;

@@ -1,51 +1,49 @@
 import styled from 'styled-components';
+
 import media from '../../config/media';
 
-const Wrapper = styled.div`
-  padding: 1rem;
+const Wrapper = styled.main`
+padding: 0 var(--space-5);
 
-  ${media.desktop`
-    padding: 1rem 3.5rem;
-  `}
+${media.desktop`
+  padding: 0 2rem;
+`}
 `;
 
 const Title = styled.h1`
-  font-family: 'Montserrat-Medium';
-  color: var(--silver);
+font-family: 'Montserrat-SemiBold';
+font-size: var(--font-size-3);
+color: var(--silver);
+padding: var(--space-5);
+text-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+
+${media.phone`
+  padding: 0;
+`}
 `;
 
-const List = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 9px;
-  grid-auto-rows: 150px;
+const Films = styled.ul`
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+grid-gap: 9px;
+grid-auto-rows: 150px;
 
-  ${media.desktop`
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 62px;
-    grid-auto-rows: 300px;
-  `}
-`;
+${media.phone`
+  grid-template-columns: repeat(4, 1fr);
+`}
 
-const Item = styled.li`
-  border-radius: 3px;
-  overflow: hidden;
-`;
+${media.tablet`
+  grid-template-columns: repeat(6, 1fr);
+`}
 
-const Poster = styled.img`
-  width: 100%;
-  height: 150px;
-  object-fit: cover;
-
-  ${media.desktop`
-    height: 300px;
-  `}
+${media.desktop`
+  grid-gap: 30px;
+  grid-auto-rows: 300px;
+`}
 `;
 
 export default {
   Wrapper,
   Title,
-  List,
-  Item,
-  Poster,
+  Films,
 };

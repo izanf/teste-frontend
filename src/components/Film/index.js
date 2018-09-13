@@ -4,9 +4,13 @@ import { shape } from 'prop-types';
 import Components from './components';
 
 const Film = ({ item }) => (
-  <Components.Item>
+  <Components.Wrapper>
     <Components.Poster src={item.Poster} />
-  </Components.Item>
+    <Components.Description>
+      <Components.Title>{item.Title}</Components.Title>
+      <Components.Year>{item.Year}</Components.Year>
+    </Components.Description>
+  </Components.Wrapper>
 );
 
 Film.propTypes = {

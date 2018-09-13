@@ -6,14 +6,15 @@ import InfiniteScroll from 'react-infinite-scroller';
 import { fetchFilms } from '../../store/films';
 
 import Components from './components';
+import Header from '../../components/Header';
 import List from '../../components/List';
-import Film from './Film';
+import Film from '../../components/Film';
 
 class HomeScreen extends Component {
   componentDidMount() {
     const { fetchFilms } = this.props;
 
-    fetchFilms();
+    fetchFilms({ s: 'any' });
   }
 
   render() {
@@ -21,17 +22,18 @@ class HomeScreen extends Component {
 
     return (
       <Components.Wrapper>
+        <Header />
+        <Components.Title>Tendency</Components.Title>
         <InfiniteScroll
           pageStart={0}
           loadMore={() => console.log('infinite')}
           hasMore={true || false}
           loader={<div className="loader" key={0}>Loading ...</div>}
         >
-          <Components.Title>Tendency</Components.Title>
           <List
             data={films}
             Interface={{
-              Wrapper: Components.List,
+              Wrapper: Components.Films,
               Item: Film,
             }}
           />
