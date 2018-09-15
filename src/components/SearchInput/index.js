@@ -6,6 +6,7 @@ import { fetchFilms } from '../../store/films';
 
 import Components from './components';
 import Icon from '../Icon';
+import Search from '../Search';
 
 class SearchInput extends Component {
   constructor() {
@@ -23,14 +24,14 @@ class SearchInput extends Component {
     const { fetchFilms } = this.props;
     const { value } = this.state;
 
-    fetchFilms({ s: value });
+    fetchFilms({ s: value ? value : 'any' });
   }
 
   render() {
     const { value } = this.state;
 
     return (
-      <Components.Wrapper onSubmit={this.onSubmit}>
+      <Components.Wrapper>
         <Components.Input
           placeholder="Que filme você procura?"
           onChange={e => this.handleState('value', e.target.value)}
@@ -41,6 +42,7 @@ class SearchInput extends Component {
           size="24px"
           onClick={this.onSubmit}
         />
+        {/* <Search /> */}
       </Components.Wrapper>
     );
   }

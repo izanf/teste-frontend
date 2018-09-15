@@ -5,7 +5,7 @@ import Components from './components';
 import imgs from '../../assets/imgs';
 import UserInfo from '../UserInfo';
 
-const Header = ({ onSubmit }) => (
+const Header = () => (
   <Components.Wrapper>
     <Components.Logo src={imgs.logo} />
     <SearchInput />
