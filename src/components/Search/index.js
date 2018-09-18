@@ -4,7 +4,16 @@ import Components from './components';
 
 const Search = () => (
   <Components.Wrapper>
-    Apenas um texte
+    <Components.Input
+      placeholder="Que filme você procura?"
+      onChange={e => this.handleState('value', e.target.value)}
+      value={value}
+    />
+    <Icon
+      name="search"
+      size="24px"
+      onClick={this.onSubmit}
+    />
   </Components.Wrapper>
 );
 

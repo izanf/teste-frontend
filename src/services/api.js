@@ -6,5 +6,5 @@ const API = axios.create({
 });
 
 export default {
-  films: params => API.get('', { params }),
+  movies: params => API.get('', { params }),
 };

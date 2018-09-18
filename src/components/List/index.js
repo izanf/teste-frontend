@@ -1,9 +1,9 @@
 import React from 'react';
 import { shape, arrayOf, func } from 'prop-types';
 
-const List = ({ data, Interface }) => (
+const List = ({ data, Interface, onClick }) => (
   <Interface.Wrapper>
-    {data.map(item => <Interface.Item item={item} />)}
+    {data.map(item => <Interface.Item item={item} onClick={onClick} />)}
   </Interface.Wrapper>
 );
 
@@ -13,6 +13,11 @@ List.propTypes = {
     Wrapper: func.isRequired,
     Item: func.isRequired,
   }).isRequired,
+  onClick: func,
+};
+
+List.defaultProps = {
+  onClick: () => false,
 };
 
 export default List;

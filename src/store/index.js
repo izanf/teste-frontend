@@ -5,12 +5,12 @@ import thunk from 'redux-thunk';
 import createHistory from 'history/createBrowserHistory';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
 import { ENV } from '../config/constants';
-import films from './films';
+import movies from './movies';
 
 export const history = createHistory();
 
 const reducers = combineReducers({
-  films,
+  movies,
   router: routerReducer,
 });
 

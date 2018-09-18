@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { fetchFilms } from '../../store/films';
+import { fetchMovies } from '../../store/movies';
 
 import Components from './components';
 import Icon from '../Icon';
-import Search from '../Search';
 
 class SearchInput extends Component {
   constructor() {
@@ -21,10 +20,10 @@ class SearchInput extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const { fetchFilms } = this.props;
+    const { fetchMovies } = this.props;
     const { value } = this.state;
 
-    fetchFilms({ s: value ? value : 'any' });
+    fetchMovies({ s: value ? value : 'any' });
   }
 
   render() {
@@ -42,18 +41,17 @@ class SearchInput extends Component {
           size="24px"
           onClick={this.onSubmit}
         />
-        {/* <Search /> */}
       </Components.Wrapper>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  films: state.films.data,
+  movies: state.movies.data,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  fetchFilms,
+  fetchMovies,
 }, dispatch);
 
 

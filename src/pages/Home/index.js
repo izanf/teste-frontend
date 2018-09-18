@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import InfiniteScroll from 'react-infinite-scroller';
 
-import { fetchFilms } from '../../store/films';
+import { fetchMovies } from '../../store/movies';
 
 import Components from './components';
 import Header from '../../components/Header';
@@ -12,13 +12,18 @@ import Film from '../../components/Film';
 
 class HomeScreen extends Component {
   componentDidMount() {
-    const { fetchFilms } = this.props;
+    const { fetchMovies } = this.props;
 
-    fetchFilms({ s: 'any' });
+    fetchMovies({ s: 'any' });
+  }
+
+  goToMovie = id => {
+    const  { history } = this.props;
+    history.push(`/filme/${id}`);
   }
 
   render() {
-    const { films } = this.props;
+    const { movies } = this.props;
 
     return (
       <Components.Wrapper>
@@ -31,11 +36,12 @@ class HomeScreen extends Component {
           loader={<div className="loader" key={0}>Loading ...</div>}
         >
           <List
-            data={films}
+            data={movies}
             Interface={{
-              Wrapper: Components.Films,
+              Wrapper: Components.Movies,
               Item: Film,
             }}
+            onClick={this.goToMovie}
           />
         </InfiniteScroll>
       </Components.Wrapper>
@@ -43,12 +49,12 @@ class HomeScreen extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  films: state.films.data,
+const mapStateToProps = store => ({
+  movies: store.movies.data,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
-  fetchFilms,
+  fetchMovies,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);

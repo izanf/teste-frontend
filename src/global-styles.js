@@ -6,7 +6,8 @@ injectGlobal`
   ${normalize()}
 
   html,
-  body {
+  body,
+  #root {
     height: 100%;
     background: var(--black);
   }
@@ -24,10 +25,15 @@ injectGlobal`
     margin: 0;
   }
 
-  input {
+  input,
+  button {
     :focus {
       outline: none;
     }
+  }
+
+  button {
+    border: none;
   }
 
   :root {
@@ -53,12 +59,5 @@ injectGlobal`
     --space-5: 8px;
     --space-6: 4px;
     --space-7: 2px;
-  }
-
-  @font-face {
-   font-family: 'Montserrat-Medium';
-   font-style: normal;
-   font-weight: 400;
-   src: url('./assets/fonts/Montserrat-Medium.ttf');
   }
 `;

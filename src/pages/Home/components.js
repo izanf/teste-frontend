@@ -22,7 +22,7 @@ ${media.phone`
 `}
 `;
 
-const Films = styled.ul`
+const Movies = styled.ul`
 display: grid;
 grid-template-columns: repeat(3, 1fr);
 grid-gap: 9px;
@@ -45,5 +45,5 @@ ${media.desktop`
 export default {
   Wrapper,
   Title,
-  Films,
+  Movies,
 };

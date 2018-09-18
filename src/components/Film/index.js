@@ -1,10 +1,10 @@
 import React from 'react';
-import { shape } from 'prop-types';
+import { shape, func } from 'prop-types';
 
 import Components from './components';
 
-const Film = ({ item }) => (
-  <Components.Wrapper>
+const Film = ({ item, onClick }) => (
+  <Components.Wrapper onClick={() => onClick(item.imdbID)}>
     <Components.Poster src={item.Poster} />
     <Components.Description>
       <Components.Title>{item.Title}</Components.Title>
@@ -15,6 +15,11 @@ const Film = ({ item }) => (
 
 Film.propTypes = {
   item: shape({}).isRequired,
+  onClick: func,
+};
+
+Film.defaultProps = {
+  onClick: () => false,
 };
 
 export default Film;
