@@ -6,6 +6,7 @@ import { selectMovie } from '../../store/movies';
 
 import Components from './components';
 import Button from '../../components/Button';
+import Rating from '../../components/Rating';
 
 class MovieScreen extends Component {
   componentDidMount() {
@@ -35,6 +36,7 @@ class MovieScreen extends Component {
         <Components.ContentWrapper>
           <Components.Title>{movie.Title}</Components.Title>
           <Components.Details>{`${movie.Year} | ${movie.Runtime} | ${movie.Genre}`}</Components.Details>
+          <Rating value={movie.imdbRating / 2} />
           <Components.Heading>Sinopse</Components.Heading>
           <Components.Sinopse>{movie.Plot}</Components.Sinopse>
           <Button
