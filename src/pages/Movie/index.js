@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import { selectMovie } from '../../store/movies';
 
+import { sizes } from '../../config/media';
 import Components from './components';
 import Button from '../../components/Button';
 import Rating from '../../components/Rating';
@@ -25,6 +26,7 @@ class MovieScreen extends Component {
 
   render() {
     const { movie, loading } = this.props;
+    const isDesktop = window.innerWidth > sizes.desktop;
 
     if (loading) return <div>loading....</div>;
 
@@ -36,15 +38,18 @@ class MovieScreen extends Component {
         <Components.ContentWrapper>
           <Components.Title>{movie.Title}</Components.Title>
           <Components.Details>{`${movie.Year} | ${movie.Runtime} | ${movie.Genre}`}</Components.Details>
-          <Rating value={movie.imdbRating / 2} />
+          <Components.RatingWrapper>
+            <Rating value={movie.imdbRating / 2} />
+            <Components.RatingText>{movie.imdbRating} / 10</Components.RatingText>
+          </Components.RatingWrapper>
           <Components.Heading>Sinopse</Components.Heading>
           <Components.Sinopse>{movie.Plot}</Components.Sinopse>
-          <Button
+          {!isDesktop && <Button
             text="Voltar"
             textColor="white"
-            color="nero"
+            color="eclipse"
             onClick={() => this.goBack}
-          />
+          />}
         </Components.ContentWrapper>
       </Components.Wrapper>
     );
