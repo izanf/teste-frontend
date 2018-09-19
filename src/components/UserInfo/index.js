@@ -6,6 +6,7 @@ import imgs from '../../assets/imgs';
 const UserInfo = () => (
   <Components.Wrapper>
     <Components.Picture src={imgs.exampleProfile} />
+    <Components.Name>Izanderson Florencio</Components.Name>
   </Components.Wrapper>
 );
 
