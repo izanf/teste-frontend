@@ -5,10 +5,10 @@ import Components from './components';
 import imgs from '../../assets/imgs';
 import UserInfo from '../UserInfo';
 
-const Header = () => (
+const Header = ({ ...props }) => (
   <Components.Wrapper>
     <Components.Logo src={imgs.logo} />
-    <SearchInput />
+    <SearchInput {...props} />
     <UserInfo />
   </Components.Wrapper>
 );

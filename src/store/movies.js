@@ -25,6 +25,7 @@ const reducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         loading: false,
         data: action.payload.Search,
+        error: action.payload.Error,
       });
     case Types.FETCH_MOVIE:
       return Object.assign({}, state, {

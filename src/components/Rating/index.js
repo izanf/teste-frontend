@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Components from './components';
-import Icons from '../../assets/icons';
+import icons from '../../assets/icons';
 
 const renderStars = (value) => {
   const stars = [];
@@ -10,7 +10,7 @@ const renderStars = (value) => {
     stars.push(
       <Components.Star
         key={i}
-        src={value < i ? Icons.star : Icons.starFilled}
+        src={value < i ? icons.star : icons.starFilled}
       />,
     );
   }

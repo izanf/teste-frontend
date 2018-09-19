@@ -1,58 +1,24 @@
-import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-
-import { fetchMovies } from '../../store/movies';
+import React from 'react';
+import { func } from 'prop-types';
 
 import Components from './components';
 import Icon from '../Icon';
 
-class SearchInput extends Component {
-  constructor() {
-    super();
+const SearchInput = ({ searchMovie }) => (
+  <Components.Wrapper>
+    <Components.Input
+      placeholder="Que filme você procura?"
+      onChange={e => searchMovie(e)}
+    />
+    <Icon
+      name="search"
+      size="24px"
+    />
+  </Components.Wrapper>
+);
 
-    this.state = {
-      value: ''
-    }
-  }
-
-  handleState = (field, value) => this.setState({ [field]: value });
-
-  onSubmit = (e) => {
-    e.preventDefault();
-    const { fetchMovies } = this.props;
-    const { value } = this.state;
-
-    fetchMovies({ s: value ? value : 'any' });
-  }
-
-  render() {
-    const { value } = this.state;
-
-    return (
-      <Components.Wrapper>
-        <Components.Input
-          placeholder="Que filme você procura?"
-          onChange={e => this.handleState('value', e.target.value)}
-          value={value}
-        />
-        <Icon
-          name="search"
-          size="24px"
-          onClick={this.onSubmit}
-        />
-      </Components.Wrapper>
-    );
-  }
+SearchInput.propTypes = {
+  searchMovie: func.isRequired,
 }
 
-const mapStateToProps = state => ({
-  movies: state.movies.data,
-});
-
-const mapDispatchToProps = dispatch => bindActionCreators({
-  fetchMovies,
-}, dispatch);
-
-
-export default connect(mapStateToProps, mapDispatchToProps)(SearchInput);
+export default SearchInput;

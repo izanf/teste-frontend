@@ -42,8 +42,16 @@ ${media.desktop`
 `}
 `;
 
+const NotFound = styled.p`
+font-family: 'Montserrat-ExtraBold';
+font-size: var(--font-size-1);
+text-align: center;
+color: var(--white);
+`;
+
 export default {
   Wrapper,
   Title,
   Movies,
+  NotFound,
 };
