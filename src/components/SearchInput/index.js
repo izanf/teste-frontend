@@ -19,6 +19,6 @@ const SearchInput = ({ searchMovie }) => (
 
 SearchInput.propTypes = {
   searchMovie: func.isRequired,
-}
+};
 
 export default SearchInput;

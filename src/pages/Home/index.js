@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import InfiniteScroll from 'react-infinite-scroller';
 
-import { fetchMovies } from '../../store/movies';
+import { fetchMovies, loadMore } from '../../store/movies';
 
 import Components from './components';
 import Header from '../../components/Header';
@@ -13,7 +13,8 @@ import Loading from '../../components/Loading';
 
 class HomeScreen extends Component {
   state = {
-    movie: '',
+    searchValue: '',
+    page: 1,
   };
 
   componentDidMount() {
@@ -29,15 +30,19 @@ class HomeScreen extends Component {
 
   searchMovie = (e) => {
     e.preventDefault();
-    const movie = e.target.value;
     const { fetchMovies } = this.props;
+    const searchValue = e.target.value;
+    const params = {
+      s: searchValue.length ? searchValue : 'any',
+    };
 
-    this.setState({ movie })
-    fetchMovies({ s: movie.length ? movie : 'any' });
+    this.setState({ searchValue })
+    fetchMovies(params);
   }
 
   renderMovies = () => {
-    const { movies, loading, error } = this.props;
+    const { movies, totalResults, loading, error, loadMore, page } = this.props;
+    const { searchValue } = this.state;
 
     if (loading) return <Loading />;
 
@@ -45,9 +50,9 @@ class HomeScreen extends Component {
 
     return (
       <InfiniteScroll
-        pageStart={0}
-        loadMore={() => null}
-        hasMore={true || false}
+        pageStart={page}
+        loadMore={() => loadMore({ s: searchValue.length ? searchValue : 'any' })}
+        hasMore={totalResults > movies.length}
         loader={<Loading />}
       >
         <List
@@ -63,12 +68,12 @@ class HomeScreen extends Component {
   }
 
   render() {
-    const { movie } = this.state;
+    const { searchValue } = this.state;
 
     return (
       <Components.Wrapper>
         <Header searchMovie={this.searchMovie} />
-        <Components.Title>{movie || 'Tendency'}</Components.Title>
+        <Components.Title>{searchValue || 'Tendency'}</Components.Title>
         {this.renderMovies()}
       </Components.Wrapper>
     );
@@ -78,11 +83,14 @@ class HomeScreen extends Component {
 const mapStateToProps = store => ({
   loading: store.movies.loading,
   movies: store.movies.data,
+  totalResults: store.movies.totalResults,
   error: store.movies.error,
+  page: store.movies.page
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   fetchMovies,
+  loadMore,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen);
