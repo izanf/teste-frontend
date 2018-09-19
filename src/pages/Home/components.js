@@ -13,12 +13,14 @@ ${media.desktop`
 const Title = styled.h1`
 font-family: 'Montserrat-SemiBold';
 font-size: var(--font-size-3);
+text-align: center;
 color: var(--silver);
 padding: var(--space-5);
 text-shadow: 0 2px 4px rgba(0, 0, 0, .5);
 
 ${media.phone`
-  padding: 0 0 var(--space-4);
+text-align: left;
+padding: 0 0 var(--space-4);
 `}
 `;
 

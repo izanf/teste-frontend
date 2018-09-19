@@ -1,33 +1,18 @@
 import styled from 'styled-components';
 
-import media from '../../config/media';
-
 const Wrapper = styled.div`
-display: flex;
-align-items: center;
-height: 16px;
-margin: 0 var(--space-5) 0 auto;
-border-radius: 16px;
-z-index: 1;
+display: none;
+width: 100%;
+height: 100%;
+background: #000;
+position: absolute;
+top: 0;
+left: 0;
 
-:focus {
-  opacity: 1;
-}
-
-svg {
-  fill: var(--white);
-}
-
-${media.desktop`
-width: 250px;
-background: rgb(255, 255, 255, .25);
-padding: var(--space-5);
-margin: 0;
-`}
+${props => props.show && 'display: block;'}
 `;
 
 const Input = styled.input`
-display: none;
 font-family: 'Montserrat-MediumItalic';
 font-size: var(--font-size-7);
 width: 100%;
@@ -39,19 +24,6 @@ padding: 12px 15px;
 :focus {
   font-family: 'Montserrat-Medium';
 }
-
-${media.desktop`
-display: block;
-`}
-`;
-
-const Overlay = styled.div`
-width: 100%;
-height: 100%;
-background: #000;
-position: absolute;
-top: 0;
-left: 0;
 `;
 
 const InputWrapper = styled.div`
@@ -61,9 +33,22 @@ margin: var(--space-3);
 border-bottom: 2px solid var(--silver);
 `;
 
+const ListOptions = styled.ul`
+margin: var(--space-3);
+`;
+
+const Option = styled.li`
+font-family: 'Montserrat-Medium';
+font-size: var(--font-size-6);
+color: var(--white);
+padding: 12px 0;
+line-height: 16px;
+`;
+
 export default {
   Wrapper,
   Input,
-  Overlay,
   InputWrapper,
+  ListOptions,
+  Option,
 };

@@ -5,6 +5,7 @@ import media from '../../config/media';
 const Wrapper = styled.header`
 display: flex;
 justify-content: space-between;
+align-items: center;
 padding: var(--space-3) var(--space-4);
 
 ${media.phone`
