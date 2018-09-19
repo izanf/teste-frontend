@@ -31,6 +31,7 @@ class MovieScreen extends Component {
     return (
       <Components.Wrapper>
         <Components.ImageWrapper>
+          <Components.ImageGradientMask />
           <Components.Image src={movie.Poster} />
         </Components.ImageWrapper>
         <Components.ContentWrapper>

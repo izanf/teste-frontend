@@ -7,6 +7,7 @@ display: flex;
 align-items: flex-end;
 height: 100%;
 overflow: hidden;
+background: var(--black);
 
 ${media.desktop`
 align-items: center;
@@ -16,6 +17,7 @@ align-items: center;
 const ImageWrapper = styled.div`
 width: 100%;
 height: 100%;
+position: relative;
 
 ${media.desktop`
 width: 42%;
@@ -27,6 +29,23 @@ width: 100%;
 height: 100%;
 object-fit: cover;
 opacity: .5;
+
+${media.desktop`
+opacity: 1;
+`}
+`;
+
+const ImageGradientMask = styled.div`
+width: 100%;
+height: 100%;
+background: linear-gradient(#000 0%, transparent 15%);
+background-color: #FFF;
+position: absolute;
+
+${media.desktop`
+background-image: linear-gradient(to left, #000 0%, transparent 10%);
+background-color: transparent;
+`}
 `;
 
 const ContentWrapper = styled.div`
@@ -34,8 +53,10 @@ padding: var(--space-3) var(--space-3) var(--space-1);
 position: fixed;
 bottom: 0;
 left: 0;
+background: linear-gradient(rgba(0,0,0,0) 0%, #000 60%);
 
 ${media.desktop`
+width: 58%;
 position: initial;
 padding: 0 var(--space-1);
 `}
@@ -46,6 +67,7 @@ font-family: 'Montserrat-ExtraBold';
 font-size: var(--font-size-2);
 color: var(--white);
 padding-bottom: var(--space-5);
+text-shadow: 0 2px 4px rgba(0, 0, 0, .5);
 
 ${media.desktop`
 font-size: var(--font-size-1);
@@ -85,6 +107,7 @@ font-family: 'Montserrat-SemiBold';
 font-size: var(--font-size-4);
 color: var(--gray);
 padding-top: var(--space-2);
+text-shadow: 0 2px 4px rgba(0, 0, 0, .5);
 
 ${media.desktop`
 font-size: var(--font-size-3);
@@ -106,6 +129,7 @@ export default {
   Wrapper,
   ImageWrapper,
   Image,
+  ImageGradientMask,
   ContentWrapper,
   Title,
   Details,

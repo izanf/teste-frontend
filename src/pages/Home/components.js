@@ -4,6 +4,7 @@ import media from '../../config/media';
 
 const Wrapper = styled.main`
 padding: 0 var(--space-5);
+background: var(--black);
 
 ${media.desktop`
   padding: 0 2rem;

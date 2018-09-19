@@ -9,7 +9,6 @@ injectGlobal`
   body,
   #root {
     height: 100%;
-    background: var(--black);
   }
 
   ul {
