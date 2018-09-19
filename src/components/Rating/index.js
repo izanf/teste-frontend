@@ -9,6 +9,7 @@ const renderStars = (value) => {
   for (let i = 1; i <= 5; i++) {
     stars.push(
       <Components.Star
+        key={i}
         src={value < i ? Icons.star : Icons.starFilled}
       />,
     );

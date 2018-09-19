@@ -19,8 +19,6 @@ class MovieScreen extends Component {
   goBack = () => {
     const { history } = this.props;
 
-    console.log(history);
-
     history.push('/');
   }
 

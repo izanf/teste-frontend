@@ -3,7 +3,7 @@ import { shape, arrayOf, func } from 'prop-types';
 
 const List = ({ data, Interface, onClick }) => (
   <Interface.Wrapper>
-    {data.map(item => <Interface.Item item={item} onClick={onClick} />)}
+    {data.map((item, index) => <Interface.Item key={index} item={item} onClick={onClick} />)}
   </Interface.Wrapper>
 );
 

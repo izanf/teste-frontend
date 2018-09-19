@@ -12,9 +12,9 @@ import Film from '../../components/Film';
 
 class HomeScreen extends Component {
   componentDidMount() {
-    const { fetchMovies } = this.props;
+    const { fetchMovies, movies } = this.props;
 
-    fetchMovies({ s: 'any' });
+    if (!movies.length) fetchMovies({ s: 'any' });
   }
 
   goToMovie = id => {
@@ -31,7 +31,7 @@ class HomeScreen extends Component {
         <Components.Title>Tendency</Components.Title>
         <InfiniteScroll
           pageStart={0}
-          loadMore={() => console.log('infinite')}
+          loadMore={() => null}
           hasMore={true || false}
           loader={<div className="loader" key={0}>Loading ...</div>}
         >
