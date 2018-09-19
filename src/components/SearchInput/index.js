@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { func } from 'prop-types';
 
+import { sizes } from '../../config/media';
 import Components from './components';
 import Icon from '../Icon';
 import SearchModal from '../SearchModal';
-
 
 class SearchInput extends Component {
   state = {
@@ -14,6 +14,7 @@ class SearchInput extends Component {
   render() {
     const { searchMovie } = this.props;
     const { modalOpen } = this.state;
+    const isDesktop = window.innerWidth > sizes.desktop;
 
     return (
       <Components.Wrapper>
@@ -24,7 +25,7 @@ class SearchInput extends Component {
         <Icon
           name="search"
           size="24px"
-          onClick={() => this.setState({ modalOpen: true })}
+          onClick={() => isDesktop ? false : this.setState({ modalOpen: true })}
         />
         <SearchModal
           show={modalOpen}
