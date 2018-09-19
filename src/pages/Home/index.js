@@ -43,6 +43,7 @@ class HomeScreen extends Component {
   renderMovies = () => {
     const { movies, totalResults, loading, error, loadMore, page } = this.props;
     const { searchValue } = this.state;
+    const hasMore = Math.ceil((Number(totalResults) - movies.length) / 10);
 
     if (loading) return <Loading />;
 
@@ -52,7 +53,7 @@ class HomeScreen extends Component {
       <InfiniteScroll
         pageStart={page}
         loadMore={() => loadMore({ s: searchValue.length ? searchValue : 'any' })}
-        hasMore={totalResults > movies.length}
+        hasMore={hasMore}
         loader={<Loading />}
       >
         <List
@@ -85,7 +86,7 @@ const mapStateToProps = store => ({
   movies: store.movies.data,
   totalResults: store.movies.totalResults,
   error: store.movies.error,
-  page: store.movies.page
+  page: store.movies.page,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
