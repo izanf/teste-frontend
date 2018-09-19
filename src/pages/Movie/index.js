@@ -8,6 +8,7 @@ import { sizes } from '../../config/media';
 import Components from './components';
 import Button from '../../components/Button';
 import Rating from '../../components/Rating';
+import Icon from '../../components/Icon';
 
 class MovieScreen extends Component {
   componentDidMount() {
@@ -47,9 +48,18 @@ class MovieScreen extends Component {
             text="Voltar"
             textColor="white"
             color="eclipse"
-            onClick={() => this.goBack}
+            onClick={() => this.goBack()}
           />}
         </Components.ContentWrapper>
+        <Components.BackButton
+          onClick={() => this.goBack()}
+        >
+          <Icon
+            name="close"
+            size="24px"
+          />
+          <span>Voltar</span>
+        </Components.BackButton>
       </Components.Wrapper>
     );
   }

@@ -9,6 +9,7 @@ injectGlobal`
   body,
   #root {
     height: 100%;
+    background: var(--black);
   }
 
   ul {
@@ -33,6 +34,7 @@ injectGlobal`
 
   button {
     border: none;
+    padding: 0;
   }
 
   :root {

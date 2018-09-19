@@ -6,7 +6,7 @@ const Button = ({ text, textColor, color, onClick }) => (
   <Components.Wrapper
     textColor={textColor}
     color={color}
-    onClick={onClick()}
+    onClick={onClick}
   >{text}</Components.Wrapper>
 );
 

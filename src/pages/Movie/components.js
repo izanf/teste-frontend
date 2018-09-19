@@ -7,7 +7,6 @@ display: flex;
 align-items: flex-end;
 height: 100%;
 overflow: hidden;
-background: var(--black);
 
 ${media.desktop`
 align-items: center;
@@ -38,13 +37,11 @@ opacity: 1;
 const ImageGradientMask = styled.div`
 width: 100%;
 height: 100%;
-background: linear-gradient(#000 0%, transparent 15%);
-background-color: #FFF;
+background-color: transparent;
 position: absolute;
 
 ${media.desktop`
 background-image: linear-gradient(to left, #000 0%, transparent 10%);
-background-color: transparent;
 `}
 `;
 
@@ -125,6 +122,33 @@ font-size: var(--font-size-6);
 `}
 `;
 
+const BackButton = styled.button`
+font-family:'Montserrat-Medium';
+font-size: var(--font-size-6);
+display: flex;
+align-items: center;
+color: var(--silver);
+background: transparent;
+position: absolute;
+top: var(--space-3);
+right: var(--space-3);
+cursor: pointer;
+
+span {
+  display: none;
+}
+
+${media.desktop`
+top: 36px;
+right: var(--space-2);
+
+span {
+  display: block;
+  padding-left: var(--space-5);
+}
+`}
+`;
+
 export default {
   Wrapper,
   ImageWrapper,
@@ -137,4 +161,5 @@ export default {
   RatingText,
   Heading,
   Sinopse,
+  BackButton,
 };
